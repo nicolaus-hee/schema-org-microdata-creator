@@ -1,0 +1,28 @@
+.type_select, .type_next_button {
+    display: none;
+}
+.type_select {
+    height: 200px;
+}
+#markup {
+    height: 200px;
+    overflow: scroll;
+}
+#properties0 {
+    height: 200px;
+}
+h1 {
+    font-weight: normal;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+h2 {
+    font-weight: normal;
+    font-size: 1.2em;
+}
+body {
+    padding-top: 2em;
+}
+footer {
+    padding-bottom: 1em;
+}
