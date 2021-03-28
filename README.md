@@ -4,7 +4,7 @@
 
 ## Purpose
 
-Tiny tool to browse schema.org types & properties and to create microdata snippets.
+Tiny tool to browse [schema.org](https://schema.org) types & properties and to create microdata snippets.
 
 ## Features
 
