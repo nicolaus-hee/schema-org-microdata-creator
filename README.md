@@ -1,10 +1,12 @@
 # schema.org Microdata Creator
 
+[Demo](https://nicolaus-hee.github.io/schema-org-microdata-creator/)
+
 <img src="screenshot.png" alt="Screenshot of schema.org microdata creator">
 
 ## Purpose
 
-Tiny tool to browse schema.org types & properties and to create microdata snippets.
+Tiny tool to browse schema.org types & properties and to create microdata snippets. [See it in action.](https://nicolaus-hee.github.io/schema-org-microdata-creator/)
 
 ## Features
 
@@ -16,3 +18,4 @@ Tiny tool to browse schema.org types & properties and to create microdata snippe
 ## To do
 
 [ ] Data types in markup
+[ ] JSON-LD markup
