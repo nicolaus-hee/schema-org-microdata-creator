@@ -115,8 +115,8 @@ function build_types_and_properties() {
             }            
         }
     }
-    // console.log(types);
-    // console.log(properties);
+    //console.log(types);
+    //console.log(properties);
 }
 
 // returns number / position of TYPE object in types array
@@ -152,13 +152,36 @@ function get_type_children(id) {
     return children;
 }
 
+// get type parents
+function get_type_parents(id) {
+    let parents = [];
+    let current_type = id;
+
+    while(types[get_type_number_from_id(current_type)].subClassOf.length > 0) {
+        parents.push(types[get_type_number_from_id(current_type)]);
+        current_type = types[get_type_number_from_id(current_type)].subClassOf[0];
+    }
+
+    parents.push(types[get_type_number_from_id(current_type)]);
+
+    return parents;
+}
+
 // returns properties of given type
-function get_type_properties(id) {
+function get_type_properties(id, include_parent_types=false) {
     let type_properties = [];
+    let parent_ids = [];
     for(var i=0; i<properties.length; i++) {
         for(var j=0; j<Object.keys(properties[i].domainIncludes).length; j++) {
-            if(properties[i].domainIncludes[j] === id) {
-                type_properties.push(properties[i]);
+            if(include_parent_types === false) {
+                if(properties[i].domainIncludes[j] === id) {
+                    type_properties.push(properties[i]);
+                }
+            } else {
+                get_type_parents(id).forEach(child => { parent_ids.push(child.id) });
+                if(parent_ids.includes(properties[i].domainIncludes[j])) {
+                    type_properties.push(properties[i]);
+                }
             }
         }
     }
@@ -185,7 +208,13 @@ function next_level_types(level=0, id='schema:Thing') {
 
 // populate property select with currently selected type's properties
 function show_type_properties(id) {
-    let type_properties = get_type_properties(id).sort(dynamicSort("label"));;
+    let type_properties = [];
+    if(document.querySelector('#include_parent_types').checked) {
+        type_properties = get_type_properties(id, true).sort(dynamicSort("label"));
+    } else {
+        type_properties = get_type_properties(id, false).sort(dynamicSort("label"));
+    }
+
     let type_html = '';
     type_properties.forEach(child => {
         type_html += '<option value="' + child.id + '" onclick="set_selected_property(\'' + child.id + '\');">' + child.label + ' (' + child.rangeIncludes[0] + ')</option>';
