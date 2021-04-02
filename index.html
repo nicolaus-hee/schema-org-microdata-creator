@@ -19,24 +19,24 @@
             <form class="form-inline">
                 <h2>Type</h2>
                 <div class="input-group mb-2 mr-sm-2">
-                    <select id="types0" class="type_select form-select" multiple>
+                    <select id="types0" class="type_select form-select" size="10">
                         <option value="schema:Thing" onclick="set_selected_type('schema:Thing');">Thing</option>
                     </select>
                     <button type="button" class="type_next_button btn btn-primary" id="types0_next" onclick="next_level_types(1,document.querySelector('#types0').value);">&gt;</button>
 
-                    <select id="types1" class="type_select form-select" multiple></select>
+                    <select id="types1" class="type_select form-select" size="10"></select>
                     <button type="button" class="type_next_button btn btn-primary" id="types1_next" onclick="next_level_types(2,document.querySelector('#types1').value);">&gt;</button>
 
-                    <select id="types2" class="type_select form-select" multiple></select>
+                    <select id="types2" class="type_select form-select" size="10"></select>
                     <button type="button" class="type_next_button btn btn-primary" id="types2_next" onclick="next_level_types(3,document.querySelector('#types2').value);">&gt;</button>
 
-                    <select id="types3" class="type_select form-select" multiple></select>
+                    <select id="types3" class="type_select form-select" size="10"></select>
                     <button type="button" class="type_next_button btn btn-primary" id="types3_next" onclick="next_level_types(4,document.querySelector('#types3').value);">&gt;</button>
 
-                    <select id="types4" class="type_select form-select" multiple></select>
+                    <select id="types4" class="type_select form-select" size="10"></select>
                     <button type="button" class="type_next_button btn btn-primary" id="types4_next" onclick="next_level_types(5,document.querySelector('#types4').value);">&gt;</button>
 
-                    <select id="types5" class="type_select form-select" multiple></select>
+                    <select id="types5" class="type_select form-select" size="10"></select>
                 </div>
                 <p class="text-muted">Description: <span id="type_description"></span></p>
                 <h2>Properties</h2>
