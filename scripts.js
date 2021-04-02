@@ -2,6 +2,7 @@ var schema_src; // schema.org definitions source
 var types = []; // schema.org parsed classes
 var properties = []; // schema.org parsed properties
 var selected_type = ''; // currently selected type
+var selected_property = ''; // currently selected property
 var selected_properties = []; // currently selected properties
 //TODO: datatypes
 
@@ -187,7 +188,7 @@ function show_type_properties(id) {
     let type_properties = get_type_properties(id).sort(dynamicSort("label"));;
     let type_html = '';
     type_properties.forEach(child => {
-        type_html += '<option value="' + child.id + '">' + child.label + ' (' + child.rangeIncludes[0] + ')</option>';
+        type_html += '<option value="' + child.id + '" onclick="set_selected_property(\'' + child.id + '\');">' + child.label + ' (' + child.rangeIncludes[0] + ')</option>';
     });
 
     const list = document.querySelector('#properties');
@@ -199,6 +200,12 @@ function set_selected_type(id) {
     selected_type = id;
     show_type_properties(selected_type);
     refresh_markup();
+    document.querySelector('#type_description').innerHTML = parseMarkdown(types[get_type_number_from_id(id)].comment);
+}
+
+function set_selected_property(id) {
+    selected_property = id;
+    document.querySelector('#property_description').innerHTML = parseMarkdown(properties[get_property_number_from_id(id)].comment);
 }
 
 // add a new property to the list of selected properties
@@ -279,4 +286,21 @@ function hide_welcome_box() {
 
     // if run as local file, at least hide for session
     localStorage.setItem('hide_welcome_box', 'true');
+}
+
+// simple markdown to html converter
+// thank you https://www.bigomega.dev/markdown-parser
+function parseMarkdown(markdownText) {
+	const htmlText = markdownText
+		.replace(/^### (.*$)/gim, '<h3>$1</h3>')
+		.replace(/^## (.*$)/gim, '<h2>$1</h2>')
+		.replace(/^# (.*$)/gim, '<h1>$1</h1>')
+		.replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
+		.replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
+		.replace(/\*(.*)\*/gim, '<i>$1</i>')
+		.replace(/!\[(.*?)\]\((.*?)\)/gim, "<img alt='$1' src='$2' />")
+		.replace(/\[(.*?)\]\((.*?)\)/gim, "<a href='$2'>$1</a>")
+		.replace(/\\n/g, ' ')
+
+	return htmlText.trim()
 }
