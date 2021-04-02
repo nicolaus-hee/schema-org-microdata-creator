@@ -10,12 +10,12 @@ Tiny tool to browse Schema.org types & properties and to create microdata snippe
 
 ## Features
 
-[x] Most recent type & property definitions loaded from schema.org
-[x] Browse type, subtypes, properties incl. descriptions / comments
-[x] Select properties for addition to markup
-[x] Create markup snippet for selected type & properties
+- [x] Most recent type & property definitions loaded from schema.org
+- [x] Browse type, subtypes, properties incl. descriptions / comments
+- [x] Select properties for addition to markup
+- [x] Create markup snippet for selected type & properties
 
 ## To do
 
-[ ] Data types in markup
-[ ] JSON-LD markup
+- [ ] Data types in markup
+- [ ] JSON-LD markup
