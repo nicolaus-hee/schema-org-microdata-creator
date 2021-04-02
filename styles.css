@@ -8,8 +8,11 @@
     height: 200px;
     overflow: scroll;
 }
-#properties0 {
+#properties {
     height: 200px;
+}
+#welcome_box {
+    display: none;
 }
 h1 {
     font-weight: normal;

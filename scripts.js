@@ -39,6 +39,11 @@ document.addEventListener('DOMContentLoaded', async function() {
     document.querySelector('#types0').selectedIndex = 0;
     document.querySelector('#types0').selectedOptions[0].dispatchEvent(new MouseEvent("click",{bubbles: true, cancellable: true}));
 
+    // show welcome box unless hidden before 
+    if(localStorage.getItem('hide_welcome_box') !== "true") {
+        document.querySelector('#welcome_box').style.display = 'block';
+    }
+
     return Promise.resolve(1);
 });
 
@@ -185,7 +190,7 @@ function show_type_properties(id) {
         type_html += '<option value="' + child.id + '">' + child.label + ' (' + child.rangeIncludes[0] + ')</option>';
     });
 
-    const list = document.querySelector('#properties0');
+    const list = document.querySelector('#properties');
     list.innerHTML = type_html;
 }
 
@@ -201,7 +206,7 @@ function add_property_to_markup(id=null) {
     if(id !== null) {
         selected_properties.push(properties[get_property_number_from_id(id)]);
     } else {
-        const properties_list = document.querySelector('#properties0');
+        const properties_list = document.querySelector('#properties');
         for(var i=0; i<properties_list.selectedOptions.length; i++) {
             selected_properties.push(properties[get_property_number_from_id(properties_list.selectedOptions[i].value)]);
         }
@@ -266,4 +271,12 @@ function dynamicSort(property) {
         var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
         return result * sortOrder;
     }
+}
+
+// hide welcome banner, set local storage var to keep hidden
+function hide_welcome_box() {
+    document.querySelector('#welcome_box').style.display='none';
+
+    // if run as local file, at least hide for session
+    localStorage.setItem('hide_welcome_box', 'true');
 }
