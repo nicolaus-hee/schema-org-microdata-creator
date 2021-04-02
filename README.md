@@ -1,4 +1,4 @@
-# schema.org Microdata Creator
+# Schema.org Microdata Creator
 
 [Demo](https://nicolaus-hee.github.io/schema-org-microdata-creator/)
 
@@ -6,7 +6,7 @@
 
 ## Purpose
 
-Tiny tool to browse schema.org types & properties and to create microdata snippets. [See it in action.](https://nicolaus-hee.github.io/schema-org-microdata-creator/)
+Tiny tool to browse Schema.org types & properties and to create microdata snippets. [See it in action.](https://nicolaus-hee.github.io/schema-org-microdata-creator/)
 
 ## Features
 
