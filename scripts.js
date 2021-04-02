@@ -283,8 +283,6 @@ function dynamicSort(property) {
 // hide welcome banner, set local storage var to keep hidden
 function hide_welcome_box() {
     document.querySelector('#welcome_box').style.display='none';
-
-    // if run as local file, at least hide for session
     localStorage.setItem('hide_welcome_box', 'true');
 }
 
