@@ -280,6 +280,16 @@ async function reset() {
     document.querySelector('#types3_next').style.display = 'none';
     document.querySelector('#types4_next').style.display = 'none';
 
+    for(var i=0; i<document.querySelector('#types1').options.length; i++) {
+        document.querySelector('#types1').options[i].selected = false;
+    }
+
+    for(var i=0; i<document.querySelector('#properties').options.length; i++) {
+        document.querySelector('#properties').options[i].selected = false;
+    }
+
+    document.querySelector('#include_parent_types').checked = true;
+
     return Promise.resolve(1);
 }
 
