@@ -256,7 +256,7 @@ function refresh_markup() {
     const markup_field = document.querySelector('#markup');
     let markup_html = '';
 
-    markup_html += '<div itemscope itemtype="https://schema.org/' + selected_type + '">\n';
+    markup_html += '<div itemscope itemtype="https://schema.org/' + selected_type.split(":")[1] + '">\n';
     for(var i=0; i<selected_properties.length; i++) {
         markup_html += '\t<span>' + selected_properties[i].label + ': <span itemprop="' + selected_properties[i].label + '">Lorem ipsum (' + selected_properties[i].rangeIncludes[0] + ')</span></span>\n';
     }
